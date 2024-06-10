@@ -2,6 +2,15 @@ function results = funcevalIM(profile,settings)    %Nahtparameterauswertung
    
     results.method = 'IM';
 
+    % fill results with NaN to prevent errors
+    results.radius = NaN;
+    results.MP = [NaN NaN];
+    results.SP = [NaN NaN];
+    results.EP = [NaN NaN];
+    results.maxdist = NaN;
+    results.DP_SP = NaN;
+    results.DP_EP = NaN;
+
     % further settings
     radius_min= 0.01;
     radius_max= 10;
