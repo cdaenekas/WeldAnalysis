@@ -55,7 +55,8 @@ We use semantic versioning. For the versions available, see the [tags on this re
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE.lic) file for details
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.lic) file and [github documentation](https://choosealicense.com/licenses/mit/) for details.
+We still care about sharing improvements and welcome everyone to make newer version open source.
 
 ## Contact Information
 
