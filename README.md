@@ -43,7 +43,7 @@ The codes created for MATLAB R2022b. Therefore this project should be compatible
 
 ## Versioning
 
-We use semantic versioning for versioning. For the versions available, see the [tags on this repository](https://github.com/cdaenekas/WeldAnalysis/tags).
+We use semantic versioning. For the versions available, see the [tags on this repository](https://github.com/cdaenekas/WeldAnalysis/tags).
 
 **Current Version**: 1.0.0
 
