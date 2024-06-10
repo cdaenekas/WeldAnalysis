@@ -4,6 +4,7 @@ function results = funcevalangle(method,profile,settings,radiusresults)
         if settings.smoothlen == 0
             results.angle = atand(max(abs(gradient(:,2))));
             results.DP = find(abs(gradient(:,2))==max(abs(gradient(:,2))),1);
+            results.sign = sign(gradient(results.DP,2));
         else
             % data point at max gradient
             DP = find(abs(gradient(:,2))==max(abs(gradient(:,2))),1);
@@ -17,6 +18,7 @@ function results = funcevalangle(method,profile,settings,radiusresults)
             % using moving average with DP_nr corresponding to smoothlength
             results.angle = atand(max(abs(movmean(gradient(:,2),DP_nr))));
             results.DP = DP;
+            results.sign = sign(gradient(results.DP,2));
         end
 
     elseif strcmp(method,'END')
@@ -35,6 +37,7 @@ function results = funcevalangle(method,profile,settings,radiusresults)
 
         end
         results.DP = radiusresults.DP_EP-1;
+        results.sign = sign(gradient(results.DP,2));
 
 
     else

@@ -27,7 +27,7 @@ function funcfigresult(profile,radiusresults,angleresults)
     % plot lines representing weld toe angle
     if ~isempty(angleresults)
         for line_nr = 1:length(angleresults)
-            m = tand(-angleresults{line_nr}.angle);
+            m = angleresults{line_nr}.sign*tand(angleresults{line_nr}.angle);
             b = profile(angleresults{line_nr}.DP,2)-m*profile(angleresults{line_nr}.DP,1);
 
             y_line = [min(profile(:,2))-1 max(profile(:,2))];
