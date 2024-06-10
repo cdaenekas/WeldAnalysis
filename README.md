@@ -49,7 +49,7 @@ We use [Semantic Versioning](https://semver.org/) for versioning. For the versio
 ## Contributing
 
 - Users are welcome to use the toolkit in accordance with the license.
-- Proper acknowledgment and citation in papers are required. See the [LICENSE](CITATION.cff) file, to cite the project. Additionally, users are encouraged to cite the related [journal paper](Link to be added later).
+- Proper acknowledgment and citation in papers are required. See the [CITATION](CITATION.cff) file, to cite the project. Additionally, users are encouraged to cite the related [journal paper](Link to be added later).
 - We also welcome contributions and further developments to the project on github, using a fork. Information can be found in the [github documentation](https://docs.github.com/de/pull-requests).
 
 ## License
