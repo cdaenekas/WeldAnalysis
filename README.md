@@ -36,6 +36,7 @@ The codes created for MATLAB R2022b. Therefore this project should be compatible
 
 - Users are responsible for the results.
 - A significant part of the analysis is data preparation, which must be customized individually.
+- The point data in the area of the base material must have the same y-coordinates and must not be inclined. 
 - This repository is not a comprehensive program but a toolkit.
 - Users must verify the accuracy of the results.
 - The quality of the scan files must be checked and should meet the requirements recommended in the paper (DOI to be added later).
