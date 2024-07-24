@@ -1,0 +1,30 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: WeldAnalysis
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Christian
+    family-names: Dänekas
+    email: daenekas@stahl.uni-hannover.de
+    orcid: 'https://orcid.org/0000-0003-2471-4051'
+    affiliation: >-
+      Leibniz University Hannover, Institute for Steel
+      Construction
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.12805727
+repository-code: 'https://github.com/cdaenekas/WeldAnalysis'
+abstract: >-
+  WeldAnalysis is a comprehensive toolkit designed to
+  automate the evaluation of weld geometries. This project
+  aims to be utilized in both research and industrial fields
+  to assess weld seam parameters, primarily weld toe radius
+  and weld toe angle, using scan data. 
+license: MIT
+version: v1.0.0
+date-released: '2024-07-24'
