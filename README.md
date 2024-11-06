@@ -1,7 +1,7 @@
 
 # WeldAnalysis
 
-[WeldAnalysis](https://github.com/cdaenekas/WeldAnalysis) is a comprehensive toolkit designed to automate the evaluation of weld geometries. This project aims to be utilized in both research and industrial fields to assess weld seam parameters, primarily weld toe radius and weld toe angle, using scan data. The evaluation is crucial for analyzing the fatigue strength of welded joints. Future releases may include the evaluation of additional weld parameters. The project was originally published in connection with the journal paper [(Dänekas et al., 2024)](Link to be added later).
+[WeldAnalysis](https://github.com/cdaenekas/WeldAnalysis) is a comprehensive toolkit designed to automate the evaluation of weld geometries. This project aims to be utilized in both research and industrial fields to assess weld seam parameters, primarily weld toe radius and weld toe angle, using scan data. The evaluation is crucial for analyzing the fatigue strength of welded joints. Future releases may include the evaluation of additional weld parameters. The project was originally published in connection with the journal paper [(Dänekas et al., 2025)](https://www.sciencedirect.com/science/article/pii/S0143974X2400662X).
 
 ## Features
 
@@ -11,7 +11,7 @@
 - Example data provided for initial evaluation.
 - Included methods for evaluation of weld toe radius: curvature method, least squares method, iteration method
 - Included methods for evaluation of weld toe angle: maximum gradient and end point gradient.
-- Detailed description of the methods and functionality of the project can be seen in [(Dänekas et al., 2024)]
+- Detailed description of the methods and functionality of the project can be seen in [(Dänekas et al., 2025)](https://www.sciencedirect.com/science/article/pii/S0143974X2400662X).
 
 ## Installation
 
@@ -50,7 +50,7 @@ We use semantic versioning. For the versions available, see the [tags on this re
 ## Contributing
 
 - Users are welcome to use the toolkit in accordance with the license.
-- Proper acknowledgment and citation in papers are required. See the [CITATION](CITATION.cff) file, to cite the project. Additionally, users are encouraged to cite the related [journal paper](Link to be added later).
+- Proper acknowledgment and citation in papers are required. See the [CITATION](CITATION.cff) file, to cite the project. Additionally, users are encouraged to cite the related [journal paper](https://www.sciencedirect.com/science/article/pii/S0143974X2400662X).
 - We also welcome contributions and further developments to the project on github, using a fork. Information can be found in the [github documentation](https://docs.github.com/de/pull-requests).
 
 ## License
