@@ -7,7 +7,8 @@ function funcfigresult(profile,radiusresults,angleresults)
 
 
     % plot
-    fig = figure('Units','centimeters','Position',[10 10 8 6]);
+    %fig = figure('Units','centimeters','Position',[10 10 8 6]);
+    fig = figure('Units','centimeters','Position',[10 10 15 10]);
     ax = axes;
     
     hold on

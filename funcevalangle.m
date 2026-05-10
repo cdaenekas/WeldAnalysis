@@ -1,5 +1,6 @@
 function results = funcevalangle(method,profile,settings,radiusresults)
-    [gradient,~] = funcderivation(profile,settings.smoothparam);
+    %[gradient,~] = funcderivation(profile,settings.smoothparam);
+    [gradient,~] = funcderivation(profile,1);
     if strcmp(method,'MAX')
         if settings.smoothlen == 0
             results.angle = atand(max(abs(gradient(:,2))));
@@ -31,9 +32,13 @@ function results = funcevalangle(method,profile,settings,radiusresults)
             DP_nr  = find(cumsum(sqrt(diff(profile(DP_all,1)).^2 + diff(profile(DP_all,2)).^2))>=settings.smoothlen,1)-1;
 
             DP_all = radiusresults.DP_EP:radiusresults.DP_EP+DP_nr;
-        
-            p = polyfit(profile(DP_all,1),profile(DP_all,2),1);
-            results.angle = abs(atand(p(1)));
+            if length(DP_all) >=3
+                p = polyfit(profile(DP_all,1),profile(DP_all,2),1);
+                results.angle = abs(atand(p(1)));
+            else
+            
+                results.angle = NaN;
+            end
 
         end
         results.DP = radiusresults.DP_EP-1;

@@ -1,6 +1,6 @@
 function [gradient,curvature] = funcderivation(profile,smoothparam)
     
-    if and(smoothparam<1.0,smoothparam>=0.8)
+    if and(smoothparam<1.0,smoothparam>=0.5)
         settings.smoothparam = smoothparam;
         settings.filter = 'Smoothing Spline';
         profile = funcfilterprofile(profile,settings);

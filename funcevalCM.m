@@ -1,16 +1,28 @@
 function results = funcevalCM(profile,settings)    %Nahtparameterauswertung
     
     results.method = 'CM';
+    
+    % Localization
+    [gradient_smooth,~] = funcderivation(profile,settings.smoothparam);
+    DP_notch = funcnotchlocalization(profile,gradient_smooth);
 
     % gradient and curvature
-    [gradient,curvature] = funcderivation(profile,settings.smoothparam);
+    [gradient,curvature] = funcderivation(profile,1);
     profile = profile(2:end-1,:);   % profile shorter than curvature and gradient
-    
+   
     % radius as reciprocal value of maximum curvature
-    results.radius = 1/max(curvature(:,2));
+    results.radius = 1/max(curvature(DP_notch,2));
+
+    if false
+        plot(profile(:,1),profile(:,2))
+        hold on
+        %plot(gradient(:,1),gradient(:,2))
+        plot(curvature(:,1),curvature(:,2))
+        plot(curvature_smooth(:,1),curvature_smooth(:,2))
+    end
     
     % normalized normal vector at weld toe
-    results.DP_toe = find(curvature(:,2)==max(curvature(:,2)),1);
+    results.DP_toe = find(curvature(:,2)==max(curvature(DP_notch,2)),1);
     normalv = [-gradient(results.DP_toe,2) 1];
     normalv = normalv/(sqrt(normalv(1)^2+normalv(2)^2));
 
