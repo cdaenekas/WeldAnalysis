@@ -1,15 +1,9 @@
 function results = funcevalIM(profile,settings)    %Nahtparameterauswertung
    
     results.method = 'IM';
-
-    % fill results with NaN to prevent errors
     results.radius = NaN;
-    results.MP = [NaN NaN];
-    results.SP = [NaN NaN];
     results.EP = [NaN NaN];
-    results.maxdist = NaN;
-    results.DP_SP = NaN;
-    results.DP_EP = NaN;
+    results.SP = [NaN NaN];
 
     % further settings
     radius_min= 0.01;
@@ -19,14 +13,19 @@ function results = funcevalIM(profile,settings)    %Nahtparameterauswertung
     delta_x_notch = 2;
     
     % curvature
-    [~,curvature] = funcderivation(profile,settings.smoothparam);
+    [gradient,curvature] = funcderivation(profile,settings.smoothparam);
 
     % location of weld toe
-	DP_toe = find(curvature(:,2)>=max(curvature(:,2)*0.9),1)+1;
+    DP_notch = funcnotchlocalization(profile,gradient);
 
-    DP_toe_start = DP_toe-find(flipud(abs(profile(1:DP_toe,1)-profile(DP_toe,1)))>=delta_x_notch,1)+1;
-    DP_toe_end = DP_toe+find(abs(profile(DP_toe:end,1)-profile(DP_toe,1))>=delta_x_notch,1)+1;
-    
+% 	DP_toe = find(curvature(:,2)>=max(curvature(:,2)*0.9),1)+1;
+% 
+%     DP_toe_start = DP_toe-find(flipud(abs(profile(1:DP_toe,1)-profile(DP_toe,1)))>=delta_x_notch,1)+1;
+%     if abs(profile(DP_toe,1)-profile(end,1))<=delta_x_notch
+%         DP_toe_end = length(profile);
+%     else
+%         DP_toe_end = DP_toe+find(abs(profile(DP_toe:end,1)-profile(DP_toe,1))>=delta_x_notch*0.1,1)-1;
+%     end
 
     % correction of inclination
         %[~,m,b] = regression(profile(1:DP_toe_start,1),profile(1:DP_toe_start,2),'one');
@@ -42,7 +41,7 @@ function results = funcevalIM(profile,settings)    %Nahtparameterauswertung
     % Loop over all data points to be analysed as possible start points (SP_all)
     bestQ   = 1000;        % high inital value for quotient
 
-    for DP_SP = DP_toe_start:DP_toe_end
+    for DP_SP = DP_notch
         SP_x = profile(DP_SP,1);
         SP_y = profile(DP_SP,2);
         for rad = radius_min:radius_delta:radius_max
@@ -55,7 +54,8 @@ function results = funcevalIM(profile,settings)    %Nahtparameterauswertung
             MPp_y = profile(DP_SP+1:size(profile,1),2);
             DP_EP = DP_SP+find((MPp_x-MP_x).^2+(MPp_y-MP_y).^2<=rad^2+0.01,1,'last')-1;
             
-            if local_y(DP_EP)>=local_y(DP_SP)+min(0.1,settings.crit1*rad)
+            if local_y(DP_EP)>=local_y(DP_SP)+max(0.1,settings.crit1*rad)
+            %if local_y(DP_EP)>=local_y(DP_SP)+settings.crit1*rad
 
                 % max distance between profile and circle
                 delta_ri=zeros(DP_EP-DP_SP-1,1);

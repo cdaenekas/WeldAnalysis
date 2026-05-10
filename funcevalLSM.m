@@ -2,11 +2,16 @@ function results = funcevalLSM(profile,settings)
     
     results.method = 'LSM';
 
+    % Localization
+    [gradient_smooth,~] = funcderivation(profile,settings.smoothparam);
+    DP_notch = funcnotchlocalization(profile,gradient_smooth);
+
     % curvature
-    [~,curvature] = funcderivation(profile,settings.smoothparam);
-   
+    [~,curvature] = funcderivation(profile,1);
+
+
     % location of weld toe, starting and end point
-    results.DP_toe = find(curvature(:,2)==max(curvature(:,2)),1)+1; %+1 since length diff between profiles and curvature
+    results.DP_toe = find(curvature(:,2)==max(curvature(DP_notch,2)),1)+1; %+1 since length diff between profiles and curvature
    
     results.DP_SP = results.DP_toe-(find(flipud(curvature(1:results.DP_toe-2,2))<=curvature(results.DP_toe,2)*settings.factor,1)-1);
     results.DP_EP = results.DP_toe+(find(curvature(results.DP_toe:end,2)<=curvature(results.DP_toe,2)*settings.factor,1)-1);
